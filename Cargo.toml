@@ -1,0 +1,18 @@
+[package]
+name = "bevy_jam_3"
+version = "0.1.0"
+edition = "2021"
+
+[toolchain]
+channel = "nightly-2023-03-26"
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev]
+opt-level = 1
+
+[dependencies]
+bevy = "0.10"
+bevy_egui = "0.20"
+bevy_asset_loader = { version = "0.16" }
