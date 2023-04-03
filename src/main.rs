@@ -4,6 +4,7 @@ use bevy_rapier2d::prelude::*;
 
 mod character;
 mod physics;
+mod components;
 
 fn main() {
     println!("Hello, world!");
@@ -20,6 +21,8 @@ fn main() {
         .add_plugin(character::CharacterPlugin)
         .add_startup_system(setup)
         .insert_resource(LevelSelection::Index(0))
+        .register_ldtk_int_cell::<components::WallBundle>(1)
+        .add_system(physics::spawn_wall_collision)
         .run();
 }
 
