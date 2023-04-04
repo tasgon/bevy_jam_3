@@ -29,10 +29,10 @@ fn spawn_light(
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands
-        .spawn(Light { radius: 128.0f32 })
+        .spawn(Light { radius: 64.0f32 })
         .with_children(|cmd| {
             cmd.spawn(MaterialMesh2dBundle {
-                mesh: meshes.add(Mesh::from(shape::Circle::default())).into(),
+                mesh: meshes.add(Mesh::from(shape::Circle::new(1.0))).into(),
                 material: materials.add(ColorMaterial::from(Color::PURPLE.with_a(0.5))),
                 ..Default::default()
             });
