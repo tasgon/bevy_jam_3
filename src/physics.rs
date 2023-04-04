@@ -1,7 +1,7 @@
+use crate::components::Wall;
 use bevy::prelude::*;
 use bevy_ecs_ldtk::prelude::*;
 use bevy_rapier2d::prelude::*;
-use crate::components::Wall;
 use std::collections::{HashMap, HashSet};
 
 #[derive(Clone, Debug, Default, Bundle, LdtkIntCell)]
@@ -42,8 +42,6 @@ impl From<&EntityInstance> for ColliderBundle {
         }
     }
 }
-
-
 
 pub fn spawn_wall_collision(
     mut commands: Commands,

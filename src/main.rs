@@ -3,8 +3,8 @@ use bevy_ecs_ldtk::prelude::*;
 use bevy_rapier2d::prelude::*;
 
 mod character;
-mod physics;
 mod components;
+mod physics;
 
 fn main() {
     println!("Hello, world!");
@@ -34,4 +34,3 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         ..Default::default()
     });
 }
-

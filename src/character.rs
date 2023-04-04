@@ -28,18 +28,13 @@ pub struct CharacterPlugin;
 
 impl Plugin for CharacterPlugin {
     fn build(&self, app: &mut bevy::prelude::App) {
-        app
-            .register_ldtk_entity::<PlayerBundle>("Player")
+        app.register_ldtk_entity::<PlayerBundle>("Player")
             .add_system(movement)
             .add_system(camera_fit_inside_current_level);
     }
 }
 
-
-pub fn movement(
-    input: Res<Input<KeyCode>>,
-    mut query: Query<(&mut Velocity,), With<Player>>,
-) {
+pub fn movement(input: Res<Input<KeyCode>>, mut query: Query<(&mut Velocity,), With<Player>>) {
     for (mut velocity,) in &mut query {
         let right = if input.pressed(KeyCode::D) { 1. } else { 0. };
         let left = if input.pressed(KeyCode::A) { 1. } else { 0. };
@@ -57,8 +52,7 @@ pub fn camera_fit_inside_current_level(
             &mut bevy::render::camera::OrthographicProjection,
             &mut Transform,
         ),
- 
-       Without<Player>,
+        Without<Player>,
     >,
     player_query: Query<&Transform, With<Player>>,
     level_query: Query<
