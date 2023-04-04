@@ -1,4 +1,8 @@
-use bevy::{prelude::*, window::{PrimaryWindow, WindowRef}, render::camera::RenderTarget};
+use bevy::{
+    prelude::*,
+    render::camera::RenderTarget,
+    window::{PrimaryWindow, WindowRef},
+};
 
 /// Cursor position in world
 #[derive(Resource, Deref, DerefMut, Default, Debug)]
@@ -8,8 +12,7 @@ pub struct InputPlugin;
 
 impl Plugin for InputPlugin {
     fn build(&self, app: &mut App) {
-        app
-            .insert_resource(Cursor::default())
+        app.insert_resource(Cursor::default())
             .add_system(cursor_system);
     }
 }
@@ -18,7 +21,7 @@ fn cursor_system(
     windows: Query<&Window>,
     primary_window: Query<&Window, With<PrimaryWindow>>,
     camera_q: Query<(&Camera, &GlobalTransform), With<crate::MainCamera>>,
-    mut cursor: ResMut<Cursor>
+    mut cursor: ResMut<Cursor>,
 ) {
     // get the camera info and transform
     // assuming there is exactly one main camera entity, so query::single() is OK
@@ -31,7 +34,8 @@ fn cursor_system(
         primary_window.single()
     };
 
-    if let Some(world_position) = window.cursor_position()
+    if let Some(world_position) = window
+        .cursor_position()
         .and_then(|cursor| camera.viewport_to_world(camera_transform, cursor))
         .map(|ray| ray.origin.truncate())
     {

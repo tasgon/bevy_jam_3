@@ -1,13 +1,15 @@
-use bevy::{prelude::*, sprite::MaterialMesh2dBundle, render::camera::RenderTarget, window::{WindowRef, PrimaryWindow}};
+use bevy::{
+    prelude::*,
+};
 use bevy_ecs_ldtk::prelude::*;
-use bevy_inspector_egui::quick::WorldInspectorPlugin;
+
 use bevy_rapier2d::prelude::*;
 
 mod character;
 mod components;
-mod physics;
-mod light;
 mod input;
+mod light;
+mod physics;
 
 #[derive(Component)]
 pub struct MainCamera;
