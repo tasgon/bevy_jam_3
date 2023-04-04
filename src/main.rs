@@ -1,6 +1,4 @@
-use bevy::{
-    prelude::*,
-};
+use bevy::prelude::*;
 use bevy_ecs_ldtk::prelude::*;
 
 use bevy_rapier2d::prelude::*;
@@ -18,6 +16,7 @@ fn main() {
     println!("Hello, world!");
     App::new()
         .add_plugins(DefaultPlugins)
+        .add_plugin(bevy_framepace::FramepacePlugin)
         .add_plugin(LdtkPlugin)
         // .add_plugin(WorldInspectorPlugin::new())
         .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0))

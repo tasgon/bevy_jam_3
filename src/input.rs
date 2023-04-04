@@ -17,7 +17,7 @@ impl Plugin for InputPlugin {
     }
 }
 
-fn cursor_system(
+pub fn cursor_system(
     windows: Query<&Window>,
     primary_window: Query<&Window, With<PrimaryWindow>>,
     camera_q: Query<(&Camera, &GlobalTransform), With<crate::MainCamera>>,

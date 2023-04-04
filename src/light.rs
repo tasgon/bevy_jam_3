@@ -19,7 +19,7 @@ impl Plugin for LightPlugin {
     fn build(&self, app: &mut App) {
         app.add_startup_system(spawn_light)
             .add_system(spawn_light_data)
-            .add_system(track_cursor);
+            .add_system(track_cursor.after(crate::input::cursor_system));
     }
 }
 
